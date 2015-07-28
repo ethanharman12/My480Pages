@@ -1,0 +1,89 @@
+﻿header {
+    background-color: forestgreen;
+}
+
+#setBoard {
+    height: 350px;
+    width: 450px;
+    background-color: lightslategrey;
+    margin: 5px;
+}
+
+    #setBoard + button {
+        margin: 5px;
+    }
+
+#scoreBoard {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    height: 100px;
+    width: 100px;
+    border: solid 1px black;
+    margin: 5px;
+    cursor: pointer;
+    background-color: white;
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+.cardSelect {
+    border: solid 1px purple;
+    background-color: aqua;
+}
+
+#sigCanvas {
+    background-color: lightslategrey;
+    cursor: default;
+}
+
+#buttonContainer {
+    display: inline;
+}
+
+    #buttonContainer button {
+        margin-left: 5px;
+    }
+
+
+@-webkit-keyframes preview {
+    0% {
+        background-color: white;
+    }
+
+    50% {
+        background-color: purple;
+        /*transform: scale(1.5);*/
+    }
+
+    100% {
+        background-color: white;
+        /*transform: scale(-1.5);*/
+    }
+}
+
+@keyframes preview {
+    0% {
+        background-color: white;
+    }
+
+    50% {
+        background-color: purple;
+        /*transform: scale(1.5);*/
+    }
+
+    100% {
+        background-color: white;
+        /*transform: scale(-1.5);*/
+    }
+}
+
+.preview {
+    -webkit-animation: preview; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 2s; /* Chrome, Safari, Opera */
+    animation: preview;
+    animation-duration: 2s;
+}

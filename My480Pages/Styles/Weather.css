@@ -1,0 +1,103 @@
+﻿header {
+    background-color: cornflowerblue;
+}
+
+.altBox {
+    margin: 5px;
+    width: 180px;
+    height: 50px;
+    -webkit-transition: height 2s;
+    transition: height 2s;
+    align-self: flex-end;
+}
+
+    .altBox span {
+        margin: 5px;
+    }
+
+#yourAltBox {
+    background-color: cornflowerblue;
+}
+
+#avgAltBox {
+    background-color: lightpink;
+}
+
+#altGrid {
+    display: flex;
+    flex-direction: row;
+    border-bottom: solid 1px black;
+    border-left: solid 1px black;
+}
+
+section {
+    border: dashed 1px black;
+    padding: 10px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+}
+
+    section label {
+        margin: 5px;
+    }
+
+        section label + span {
+            margin-left: 5px;
+            max-width: 300px;
+        }
+
+    section button {
+        max-width: 150px;
+        margin: 10px;
+    }
+
+.flexContainer {
+    border: solid 1px black;
+    display: flex;
+    flex-direction: row;
+}
+
+#distanceDiv {
+    margin: 5px;
+}
+
+@-webkit-keyframes preview {
+    0% {
+        background-color: white;
+    }
+
+    50% {
+        background-color: purple;
+        /*transform: scale(1.5);*/
+    }
+
+    100% {
+        background-color: white;
+        /*transform: scale(-1.5);*/
+    }
+}
+
+@keyframes preview {
+    0% {
+        background-color: white;
+    }
+
+    50% {
+        background-color: purple;
+        /*transform: scale(1.5);*/
+    }
+
+    100% {
+        background-color: white;
+        /*transform: scale(-1.5);*/
+    }
+}
+
+.finished {
+    -webkit-animation: preview; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 1s; /* Chrome, Safari, Opera */
+    animation: preview;
+    animation-duration: 1s;
+}

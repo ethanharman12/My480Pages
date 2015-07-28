@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Inject</title>
+    <link href="../Styles/Site.css" rel="stylesheet" />
+    <link href="../Styles/Inject.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-2.1.4.js"></script>
+    <script src="../PageScripts/HeaderNav.js"></script>
+    <script src="../PageScripts/Inject.js"></script>
+</head>
+<body>
+    <header>
+        <h1><a href="LandingPage.html">My 480 Pages</a></h1>
+        <nav>
+        </nav>
+    </header>
+    <section>        
+        <input type="text" id="message" />
+        <button onclick="injectApp.Inject()">Inject</button>
+        <button onclick="injectApp.Safe()">Safe</button>
+        <div id="messageBoard">
+        </div>
+    </section>    
+</body>
+</html>

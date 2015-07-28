@@ -1,0 +1,5 @@
+c:\users\eharman\documents\visual studio 2012\Projects\My480Pages\My480Pages\bin\My480Pages.dll
+c:\users\eharman\documents\visual studio 2012\Projects\My480Pages\My480Pages\bin\My480Pages.pdb
+c:\users\eharman\documents\visual studio 2012\Projects\My480Pages\My480Pages\obj\Debug\My480Pages.csprojResolveAssemblyReference.cache
+c:\users\eharman\documents\visual studio 2012\Projects\My480Pages\My480Pages\obj\Debug\My480Pages.dll
+c:\users\eharman\documents\visual studio 2012\Projects\My480Pages\My480Pages\obj\Debug\My480Pages.pdb

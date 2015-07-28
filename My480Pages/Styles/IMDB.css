@@ -1,0 +1,39 @@
+﻿header {
+    background-color:darksalmon;
+}
+
+.flexContainer {
+    display:flex;
+}
+
+    .flexContainer section {
+        flex: 2;
+        margin: 30px;
+        padding: 10px;
+    }
+
+        /*.flexContainer section:nth-of-type(1) {
+            flex: 1;
+        }*/
+
+form {
+    border: dashed 1px black;
+    display: flex;
+    flex-direction:column;
+}
+
+    form label {
+        /*color:red;*/
+        margin:5px;
+    }
+
+        form label + input, form label + select {
+            /*color: blue;*/
+            margin-left: 5px;
+            max-width: 300px;
+        }
+
+    form input[type="submit"] {
+        max-width: 50px;
+        margin: 10px;
+    }

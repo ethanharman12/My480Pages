@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Weather</title>
+    <link href="../Styles/Site.css" rel="stylesheet" />
+    <link href="../Styles/Weather.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-2.1.4.js"></script>
+    <script src="../PageScripts/HeaderNav.js"></script>
+    <script src="../PageScripts/Weather.js"></script>
+</head>
+<body>
+    <header>
+        <h1><a href="LandingPage.html">My 480 Pages</a></h1>
+        <nav>
+        </nav>
+    </header>
+    <div class="flexContainer">
+
+        <section id="weatherBox">
+            <label for="temp">
+                Temp: 
+            <span id="temp"></span>
+            </label>
+            <label for="humid">
+                Humidity: 
+            <span id="humid"></span>
+            </label>
+            <label for="weather">
+                Weather: 
+            <span id="weather"></span>
+            </label>
+            <label for="time">
+                Time: 
+            <span id="time"></span>
+            </label>
+            <button id="updateWeatherBtn" onclick="weatherApp.GetWeather()" hidden="hidden">Update Weather</button>
+        </section>
+
+        <section id="latLong">
+            <label for="latitude">
+                Latitude: 
+            <span id="latitude"></span>
+            </label>
+            <label for="longitude">
+                Longitude: 
+            <span id="longitude"></span>
+            </label>
+
+            <div id="distanceDiv" hidden="hidden">
+                You are <span id="distanceText"></span>&nbsp;miles from where you originally checked in.
+            </div>            
+        </section>
+
+        <section id="altitude">
+            <div id="altGrid">
+                
+                <div id="yourAltBox" class="altBox">
+                    <label class="gridLabel">Your Altitude (m):</label><span id="yourAlt"></span>
+                </div>
+                
+                <div id="avgAltBox" class="altBox">
+                    <label class="gridLabel">Average Altitude (m):</label><span id="avgAlt"></span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿body {
+    margin:0px;
+}
+
+header {
+    border-bottom: solid 2px black;
+    padding:5px;
+    display:flex;
+    flex-direction:column;
+}
+
+    header h1 {
+        margin:5px;
+    }
+
+    header a {
+        text-decoration:none;
+        color:black;
+    }
+    
+    header nav {
+        /*float:right;*/
+        align-self:flex-end;
+        /*border-bottom: solid 1px black;*/
+    }
+
+        header nav a {
+            padding: 10px;
+            margin: 5px;
+
+            font-size: 24px;
+            text-decoration:none;
+            /*color:darkslategray;*/
+            /*text-shadow: 1px 1px 2px #fff, -1px -1px 2px #fff;*/
+        }

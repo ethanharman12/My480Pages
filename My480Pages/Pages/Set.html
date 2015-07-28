@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Set</title>
+    <link href="../Styles/Site.css" rel="stylesheet" />
+    <link href="../Styles/Set.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-2.1.4.js"></script>
+    <script src="../PageScripts/HeaderNav.js"></script>
+    <script src="../PageScripts/Set.js"></script>
+</head>
+<body>
+    <header>
+        <h1><a href="LandingPage.html">My 480 Pages</a></h1>
+        <nav>
+        </nav>
+    </header>
+    <section>
+        <div id="setBoard">
+        </div>
+        <div id="scoreBoard">
+            <label>Sets Found: <span id="setCount"></span></label>
+            <label>Time Played: <span id="timePlayed"></span></label>
+        </div>
+        <div id="buttonContainer">
+            <button onclick="setApp.GenerateSet()">Generate</button>
+            <button onclick="setApp.DetermineSets()">Any Sets?</button>
+            <span id="possibleSetsCount"></span>
+            <button id="showSolButton" onclick="setApp.DisplaySet()" disabled>Show Set</button>
+        </div>
+    </section>
+</body>
+</html>

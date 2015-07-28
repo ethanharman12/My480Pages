@@ -1,0 +1,67 @@
+﻿header {
+    background-color: lightseagreen;
+}
+
+.boxContainer {
+    display: -ms-grid;
+    /*columns: 300px 2;
+    column-gap: 10px;*/
+    -ms-grid-columns: 300px 300px;
+    /*-ms-grid-column-align: stretch;*/
+    -ms-grid-rows: (300px)[2];
+}
+
+.box {
+    /*width: 300px;
+    height: 300px;*/
+    margin: 10px;
+    padding: 10px;
+    border: solid 1px black;
+}
+
+#static {
+    /*-ms-grid-column-align: center;*/
+    background-color: blue;
+}
+
+    #static span {
+        position: static;
+    }
+
+#fixed {
+    background-color: red;
+    -ms-grid-column: 2;
+}
+
+    #fixed span {
+        position: fixed;
+    }
+
+#absolute {
+    -ms-grid-row: 2;
+    background-color: green;
+    position: relative;
+}
+
+    #absolute span {
+        position: absolute;
+    }
+
+#relative {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    background-color: yellow;
+}
+
+    #relative span {
+        position: relative;
+    }
+
+span {
+    left: 25px;
+    top: 50px;
+}
+
+p {
+    background-color: gray;
+}

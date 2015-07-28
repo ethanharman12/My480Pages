@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Position</title>
+    <link href="../Styles/Site.css" rel="stylesheet" />
+    <link href="../Styles/Position.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-2.1.4.js"></script>
+    <script src="../PageScripts/HeaderNav.js"></script>
+    <script src="../PageScripts/Position.js"></script>
+</head>
+<body>
+    <header>
+        <h1><a href="LandingPage.html">My 480 Pages</a></h1>
+        <nav>
+        </nav>
+    </header>
+    <section>
+        <input id="inpInt" value="11"/>
+        <input type="button" value="Retry" onclick="positApp.ThrowError()"/>
+        <div id="message">
+        </div>
+    </section>
+    <div class="boxContainer">        
+        <div id="static" class="box">
+            <p>This is the static.</p>
+            <span>Static</span>
+            <p>This was the static.</p>
+        </div>
+        <div id="fixed" class="box">
+            <p>This is the fixed.</p>
+            <span>Fixed</span>
+            <p>This was the fixed.</p>
+        </div>
+        <div id="absolute" class="box">
+            <p>This is the absolute.</p>
+            <span>Absolute</span>
+            <p>This was the absolute.</p>
+        </div>
+        <div id="relative" class="box">
+            <p>This is the relative.</p>
+            <span>Relative</span>
+            <p>This was the relative.</p>
+        </div>
+    </div>
+</body>
+</html>

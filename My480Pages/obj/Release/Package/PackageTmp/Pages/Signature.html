@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Signature</title>
+    <link href="../Styles/Site.css" rel="stylesheet" />
+    <link href="../Styles/Signature.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-2.1.4.js"></script>
+    <script src="../PageScripts/HeaderNav.js"></script>
+    <script src="../PageScripts/Sig.js"></script>
+</head>
+<body>
+    <header>
+        <h1><a href="LandingPage.html">My 480 Pages</a></h1>
+        <nav>
+        </nav>
+    </header>
+    <section>
+        <label for="sigCanvas">Signature:</label>
+        <canvas id="sigCanvas" width="500" height="100" 
+            onmousedown="sigApp.BeginCapture()" 
+            onmouseout="sigApp.EndCapture()" 
+            onmouseup="sigApp.EndCapture()"></canvas>
+        <button onclick="sigApp.SaveSig()">Save</button>
+        <button onclick="sigApp.ClearSig()">Clear</button>
+        <div id="savedSig">
+        </div>
+    </section>
+</body>
+</html>

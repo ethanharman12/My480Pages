@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>IMDB</title>
+    <link href="../Styles/Site.css" rel="stylesheet" />
+    <link href="../Styles/IMDB.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-2.1.4.js"></script>
+    <script src="../PageScripts/HeaderNav.js"></script>
+    <script src="../PageScripts/IMDB.js"></script>
+</head>
+<body>
+    <header>
+        <h1><a href="LandingPage.html">My 480 Pages</a></h1>
+        <nav>
+        </nav>
+    </header>
+    <div class="flexContainer">
+        <section>
+            <form id="findForm">
+                <label for="containsText">
+                    Title Contains: 
+                <input type="text" id="containsText" />
+                </label>
+
+                <label for="startDate">
+                    Release Range Start: 
+                <input type="date" name="startDate" required />
+                </label>
+
+                <label for="endDate">
+                    Release Range End: 
+                <input type="date" name="endDate" required />
+                </label>
+
+                <label for="actor">
+                    Actor: 
+                <select name="actor">
+                    <option>Morgan Freeman</option>
+                    <option>Ethan Hawke</option>
+                    <option>Tom Cruise</option>
+                </select>
+
+                </label>
+
+                <input type="submit" value="Find" />
+            </form>
+        </section>
+        <section>
+            <h2 id="answerTitle">Title</h2>
+            <!--<img id="answerCover" src="" />-->
+            <date id="answerDate">
+                Release Date
+            </date>
+            <div id="answerActors">
+                Actors
+            </div>
+        </section>
+    </div>
+</body>
+</html>
