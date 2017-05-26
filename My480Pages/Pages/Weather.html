@@ -18,46 +18,56 @@
 
         <section id="weatherBox">
             <label for="temp">
-                Temp: 
-            <span id="temp"></span>
+                Temp:
+                <span id="temp"></span>
             </label>
             <label for="humid">
-                Humidity: 
-            <span id="humid"></span>
+                Humidity:
+                <span id="humid"></span>
             </label>
             <label for="weather">
-                Weather: 
-            <span id="weather"></span>
+                Weather:
+                <span id="weather"></span>
             </label>
             <label for="time">
-                Time: 
-            <span id="time"></span>
+                Time:
+                <span id="time"></span>
             </label>
+            <section id="errorMessageContainer">
+                <label for="errorMessage">
+                    Error:
+                    <span id="errorMessage"></span>
+                </label>
+                <label for="errorTime">
+                    Time:
+                    <span id="errorTime"></span>
+                </label>
+            </section>
             <button id="updateWeatherBtn" onclick="weatherApp.GetWeather()" hidden="hidden">Update Weather</button>
         </section>
 
         <section id="latLong">
             <label for="latitude">
-                Latitude: 
-            <span id="latitude"></span>
+                Latitude:
+                <span id="latitude"></span>
             </label>
             <label for="longitude">
-                Longitude: 
-            <span id="longitude"></span>
+                Longitude:
+                <span id="longitude"></span>
             </label>
 
             <div id="distanceDiv" hidden="hidden">
                 You are <span id="distanceText"></span>&nbsp;miles from where you originally checked in.
-            </div>            
+            </div>
         </section>
 
         <section id="altitude">
             <div id="altGrid">
-                
+
                 <div id="yourAltBox" class="altBox">
                     <label class="gridLabel">Your Altitude (m):</label><span id="yourAlt"></span>
                 </div>
-                
+
                 <div id="avgAltBox" class="altBox">
                     <label class="gridLabel">Average Altitude (m):</label><span id="avgAlt"></span>
                 </div>

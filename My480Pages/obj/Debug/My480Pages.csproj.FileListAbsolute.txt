@@ -3,3 +3,9 @@ c:\users\eharman\documents\visual studio 2012\Projects\My480Pages\My480Pages\bin
 c:\users\eharman\documents\visual studio 2012\Projects\My480Pages\My480Pages\obj\Debug\My480Pages.csprojResolveAssemblyReference.cache
 c:\users\eharman\documents\visual studio 2012\Projects\My480Pages\My480Pages\obj\Debug\My480Pages.dll
 c:\users\eharman\documents\visual studio 2012\Projects\My480Pages\My480Pages\obj\Debug\My480Pages.pdb
+C:\Projects\My480Pages\My480Pages\bin\My480Pages.dll.config
+C:\Projects\My480Pages\My480Pages\bin\My480Pages.dll
+C:\Projects\My480Pages\My480Pages\bin\My480Pages.pdb
+C:\Projects\My480Pages\My480Pages\obj\Debug\My480Pages.csprojResolveAssemblyReference.cache
+C:\Projects\My480Pages\My480Pages\obj\Debug\My480Pages.dll
+C:\Projects\My480Pages\My480Pages\obj\Debug\My480Pages.pdb

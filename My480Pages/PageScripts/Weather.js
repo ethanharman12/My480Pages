@@ -2,6 +2,18 @@
 {
     var storedLocation = null;
 
+    function ClearError()
+    {
+        var errorMessageContainer = document.getElementById("errorMessageContainer");
+        errorMessageContainer.style.display = "none";
+
+        var timeText = document.getElementById("errorTime");
+        timeText.innerText = "";
+
+        var errorText = document.getElementById("errorMessage");
+        errorText.innerText = "";
+    }
+
     function DisplayAltitude(altitude)
     {
         var altBox = document.getElementById("yourAltBox");
@@ -56,6 +68,18 @@
         }
     };
 
+    function DisplayError(errorMessage)
+    {
+        var errorMessageContainer = document.getElementById("errorMessageContainer");
+        errorMessageContainer.style.display = "flex";
+
+        var timeText = document.getElementById("errorTime");
+        timeText.innerText = new Date().toLocaleString();
+
+        var errorText = document.getElementById("errorMessage");
+        errorText.innerText = errorMessage;
+    }
+
     function DisplayLocation(location)
     {
         var long = document.getElementById("longitude");
@@ -87,7 +111,7 @@
             box.classList.remove('finished');
         }, 1000);
     };
-
+    
     function FetchWeather(location)
     {
         var url = "http://forecast.weather.gov/MapClick.php?lat=" + location.coords.latitude +
@@ -117,17 +141,8 @@
                 }
             });
         });
-
+        
         return promise;
-
-        //var request = new XMLHttpRequest();
-
-        //request.open("GET", "http://forecast.weather.gov/MapClick.php?lat=40.147663200000004&lon=-82.9488296&FcstType=dwml");
-        //request.withCredentials = true;
-        //request.send();
-
-        //var data = request.response;
-        //var xml = request.responseXML;
     };
 
     function GetLocation()
@@ -146,6 +161,7 @@
         .then(
         function (weather)
         {
+            ClearError();
             DisplayWeather(weather);
 
             if (location.coords.altitude)
@@ -161,8 +177,7 @@
         },
         function (error)
         {
-            alert(error);//"Error fetching weather data: " +
-
+            DisplayError(error);
             ShowUpdateButton();
         });
     }
