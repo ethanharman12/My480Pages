@@ -118,7 +118,7 @@
                   "&lon=" + location.coords.longitude + "&FcstType=dwml";
 
         var yqlURL = [
-            "http://query.yahooapis.com/v1/public/yql",
+            "https://query.yahooapis.com/v1/public/yql",
             "?q=" + encodeURIComponent("select * from xml where url='" + url + "'"),
             "&format=xml&callback=?"
         ].join("");
