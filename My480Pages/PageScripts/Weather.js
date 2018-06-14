@@ -1,6 +1,8 @@
 ﻿var weatherApp = (function ()
 {
     var storedLocation = null;
+    var weatherApiKey = "b5ff74d71f025608f36b58174edda7fa";
+    var elevationApiKey = "AIzaSyChIZjQhKaKiwh1dwHCZ4hudqUklO5i7y8";
 
     function ClearError()
     {
@@ -27,7 +29,7 @@
 
         avgText.innerText = 760;
         avgBox.style.height = 760/3+"px";
-    };
+    }
 
     function DisplayDistance(location)
     {
@@ -66,7 +68,7 @@
                 localStorage.long = location.coords.longitude;
             }
         }
-    };
+    }
 
     function DisplayError(errorMessage)
     {
@@ -87,12 +89,105 @@
 
         long.innerText = location.coords.longitude;
         lat.innerText = location.coords.latitude;
-    };
+    }
+
+    function DisplayForecast(forecast) {
+
+        var currentDate = new Date().getDate();
+        var todaysForecast = forecast[0];
+        var hourlyIndex = 0;
+
+        while (todaysForecast.time.getDate() == currentDate && hourlyIndex < 5) {
+            var weather = todaysForecast;
+            var timeText = document.getElementById("time0" + hourlyIndex);
+            timeText.innerText = moment(weather.time).format("MM/DD/YYYY hh:mm:ss");
+
+            var tempText = document.getElementById("temp0" + hourlyIndex);
+            tempText.innerText = weather.tempMin + " - " + weather.tempMax;
+
+            var humidText = document.getElementById("humid0" + hourlyIndex);
+            humidText.innerText = weather.humidity;
+
+            var weatherText = document.getElementById("weather0" + hourlyIndex);
+            weatherText.innerText = weather.weather;
+
+            var box = document.getElementById('weatherBox0' + hourlyIndex);
+            box.classList.add('finished');
+
+            setTimeout(function () {
+                box.classList.remove('finished');
+            }, 1000);
+
+            hourlyIndex++;
+            todaysForecast = forecast[hourlyIndex];
+        }
+
+        for (var i = hourlyIndex; i < 5; i++) {
+            var box = document.getElementById('weatherBox0' + i);
+            box.style.display = "none";
+        }
+
+        var i = 0;
+        var dayIndex = 0;        
+
+        while (i < 5 && dayIndex < forecast.length) {
+            var dayForecast = forecast[dayIndex];
+            dayIndex++;
+
+            if (dayForecast.time.getDate() > currentDate) {
+                currentDate = dayForecast.time.getDate();
+
+                var weather = dayForecast;
+                var timeText = document.getElementById("time" + i);
+                timeText.innerText = moment(weather.time).format("ddd MM/DD/YYYY");
+
+                var tempText = document.getElementById("temp" + i);
+                tempText.innerText = weather.tempMin + " - " + weather.tempMax;
+
+                var humidText = document.getElementById("humid" + i);
+                humidText.innerText = weather.humidity;
+
+                var weatherText = document.getElementById("weather" + i);
+                weatherText.innerText = weather.weather;
+
+                var box = document.getElementById('weatherBox' + i);
+                box.classList.add('finished');
+
+                setTimeout(function () {
+                    box.classList.remove('finished');
+                }, 1000);
+
+                i++;
+            }
+        }
+
+        //for (var i = 0; i < 5; i++) {
+        //    var weather = forecast[i];
+        //    var timeText = document.getElementById("time" + i);
+        //    timeText.innerText = moment(weather.time).format("MM/DD/YYYY hh:mm:ss");
+
+        //    var tempText = document.getElementById("temp" + i);
+        //    tempText.innerText = weather.tempMin + " - " + weather.tempMax;
+
+        //    var humidText = document.getElementById("humid" + i);
+        //    humidText.innerText = weather.humidity;
+
+        //    var weatherText = document.getElementById("weather" + i);
+        //    weatherText.innerText = weather.weather;
+
+        //    var box = document.getElementById('weatherBox' + i);
+        //    box.classList.add('finished');
+
+        //    setTimeout(function () {
+        //        box.classList.remove('finished');
+        //    }, 1000);
+        //}
+    }
 
     function DisplayWeather(weather)
     {
         var timeText = document.getElementById("time");
-        timeText.innerText = weather.time.toString();
+        timeText.innerText = moment(weather.time).format("MM/DD/YYYY hh:mm:ss");
 
         var tempText = document.getElementById("temp");
         tempText.innerText = weather.temperature;
@@ -110,28 +205,72 @@
         {
             box.classList.remove('finished');
         }, 1000);
-    };
-    
-    function FetchWeather(location)
+    }
+
+    function FetchElevation(location)
     {
-        var url = "http://forecast.weather.gov/MapClick.php?lat=" + location.coords.latitude +
-                  "&lon=" + location.coords.longitude + "&FcstType=dwml";
+        var url = "https://maps.googleapis.com/maps/api/elevation/json?locations=" + location.coords.latitude +
+            "," + location.coords.longitude +
+            "&key=" + elevationApiKey;
 
         var yqlURL = [
             "https://query.yahooapis.com/v1/public/yql",
-            "?q=" + encodeURIComponent("select * from xml where url='" + url + "'"),
-            "&format=xml&callback=?"
+            "?q=" + encodeURIComponent("select * from json where url='" + url + "'"),
+            "&format=json&callback=?"
         ].join("");
+
+        var promise = new Promise(function (resolve, reject) {
+            $.getJSON(yqlURL, function (data) {
+                try {
+                    var elevation = Number(data.query.results.json.results.elevation);
+
+                    resolve(elevation);
+                }
+                catch (e) {
+                    reject(e);
+                }
+            });
+        });
+
+        return promise;
+    }
+
+    function FetchForecast(location) {
+        var url = "https://api.openweathermap.org/data/2.5/forecast?lat=" + location.coords.latitude +
+            "&lon=" + location.coords.longitude +
+            "&appid=" + weatherApiKey +
+            "&units=imperial";
+
+        var promise = new Promise(function (resolve, reject) {
+            $.getJSON(url, function (data) {
+                try {
+                    var weatherObj = ParseForecast(data);
+
+                    resolve(weatherObj);
+                }
+                catch (e) {
+                    reject(e);
+                }
+            });
+        });
+
+        return promise;
+    }
+
+    function FetchWeather(location)
+    {
+        var url = "https://api.openweathermap.org/data/2.5/weather?lat=" + location.coords.latitude +
+            "&lon=" + location.coords.longitude +
+            "&appid=" + weatherApiKey +
+            "&units=imperial";
 
         var promise = new Promise(function (resolve, reject)
         {
-            $.getJSON(yqlURL, function (data)
+            $.getJSON(url, function (data)
             {
                 try
                 {
-                    xmlContent = $(data.results[0]);
-
-                    var weatherObj = ParseWeather(xmlContent);
+                    var weatherObj = ParseWeather(data);
 
                     resolve(weatherObj);
                 }
@@ -141,9 +280,50 @@
                 }
             });
         });
-        
+
         return promise;
-    };
+    }
+
+    function GetElevation(location)
+    {
+        location = location || storedLocation;
+
+        FetchElevation(location)
+        .then(
+        function (elevation)
+        {
+            if (location.coords.altitude)
+            {
+                DisplayAltitude(location.coords.altitude);
+            }
+            else
+            {
+                DisplayAltitude(elevation);
+            }
+
+            ShowUpdateButton();
+        },
+        function (error)
+        {
+            DisplayError(error);
+            ShowUpdateButton();
+        });
+    }
+
+    function GetForecast(location) {
+        location = location || storedLocation;
+
+        FetchForecast(location)
+            .then(
+            function (weather) {
+                ClearError();
+                DisplayForecast(weather);                
+            },
+            function (error) {
+                DisplayError(error);
+                ShowUpdateButton();
+            });
+    }
 
     function GetLocation()
     {
@@ -182,46 +362,48 @@
         });
     }
 
-    function ParseWeather(xmlContent)
-    {
-        var root = xmlContent[0];
-        var datas = root.getElementsByTagName("data");
+    function ParseForecast(data) {
+        var days = [];
 
-        var current = [].slice.call(datas).filter(function (i)
-        {
-            return i.getAttribute("type") == "current observations";
-        });
+        for (var i = 0; i < data.list.length; i++) {
+            var dayData = data.list[i];
 
-        var paras = current[0].getElementsByTagName("parameters");
-        var temps = paras[0].getElementsByTagName("temperature");
+            var date = new Date(dayData.dt_txt);
 
-        var apparentTemp = [].slice.call(temps).filter(function (i)
-        {
-            return i.getAttribute("type") == "apparent";
-        });
+            var tempMin = Math.round(dayData.main.temp_min);
+            var tempMax = Math.round(dayData.main.temp_max);
 
-        //var temp = apparentTemp[0].childNodes[1].innerText;
-        var temp = apparentTemp[0].children[0].innerText;
+            var humidity = Math.round(dayData.main.humidity);
 
-        //var humidity = paras[0].getElementsByTagName("humidity")[0].childNodes[1].innerText;
-        var humidity = paras[0].getElementsByTagName("humidity")[0].children[0].innerText;
+            var weather = dayData.weather[0].main + " - " + dayData.weather[0].description;
 
-        var weatherDatas = paras[0].getElementsByTagName("weather")[0].getElementsByTagName("weather-conditions");
-        var weatherDesc = [].slice.call(weatherDatas).filter(function (i)
-        {
-            return i.getAttribute("weather-summary") != null;
-        });
+            days.push({
+                time: date,
+                tempMin: tempMin,
+                tempMax: tempMax,
+                humidity: humidity,
+                weather: weather
+            });
+        }        
 
-        var weather = weatherDesc[0].getAttribute("weather-summary");
+        return days;
+    }
 
-        var altitude = current[0].getElementsByTagName("location")[0]
-                                 .getElementsByTagName("height")[0]
-                                 .childNodes[0].nodeValue;
+    function ParseWeather(data) {
+        
+        var temp = Math.round(data.main.temp);
+        
+        var humidity = Math.round(data.main.humidity);
 
-        var altMeters = Number(altitude) * .3048;
+        var weather = data.weather[0].main + " - " + data.weather[0].description;        
 
-        return { time: new Date(), temperature: temp, humidity: humidity, weather: weather, altitude: altMeters };
-    };
+        return {
+            time: new Date(),
+            temperature: temp,
+            humidity: humidity,
+            weather: weather
+        };
+    }
 
     function ProcessLocation(location)
     {
@@ -230,13 +412,30 @@
         DisplayLocation(location);
         DisplayDistance(location);
         GetWeather(location);
-    };
+        GetForecast(location);
+        GetElevation(location);
+    }
 
     function ShowUpdateButton()
     {
         var btn = document.getElementById("updateWeatherBtn");
         btn.hidden = false;
-    };
+        //var btn = document.getElementById("toggleForecastBtn");
+        //btn.hidden = false;
+    }
+
+    //function ToggleForecast() {
+    //    var btn = document.getElementById("toggleForecastBtn");
+    //    var forecastDiv = document.getElementById("forecastContainer");
+    //    if (btn.innerText == "Show Forecast") {
+    //        btn.innerText = "Hide Forecast";
+    //        forecastDiv.style.display = "flex";
+    //    }
+    //    else {
+    //        btn.innerText = "Show Forecast";
+    //        forecastDiv.style.display = "none";
+    //    }
+    //}
 
     return {
         DisplayAltitude: DisplayAltitude,
@@ -245,7 +444,8 @@
         DisplayWeather: DisplayWeather,
         GetLocation: GetLocation,
         GetWeather: GetWeather,
-        ParseWeather: ParseWeather
+        ParseWeather: ParseWeather,
+        //ToggleForecast: ToggleForecast
     };
 })();
 

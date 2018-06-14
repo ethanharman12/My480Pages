@@ -7,6 +7,7 @@
     <script src="../Scripts/jquery-2.1.4.js"></script>
     <script src="../PageScripts/HeaderNav.js"></script>
     <script src="../PageScripts/Weather.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 </head>
 <body>
     <header>
@@ -44,6 +45,7 @@
                 </label>
             </section>
             <button id="updateWeatherBtn" onclick="weatherApp.GetWeather()" hidden="hidden">Update Weather</button>
+            <!--<button id="toggleForecastBtn" onclick="weatherApp.ToggleForecast()" hidden="hidden">Hide Forecast</button>-->
         </section>
 
         <section id="latLong">
@@ -72,8 +74,193 @@
                     <label class="gridLabel">Average Altitude (m):</label><span id="avgAlt"></span>
                 </div>
             </div>
-        </section>
-
+        </section>        
+    </div>
+    <div id="forecastContainer">
+        <div id="hourlyContainer" class="flexContainer">
+            <section id="weatherBox00">
+                <label for="temp00">
+                    Temp:
+                    <span id="temp00"></span>
+                </label>
+                <label for="humid00">
+                    Humidity:
+                    <span id="humid00"></span>
+                </label>
+                <label for="weather00">
+                    Weather:
+                    <span id="weather00"></span>
+                </label>
+                <label for="time00">
+                    Time:
+                    <span id="time00"></span>
+                </label>
+            </section>
+            <section id="weatherBox01">
+                <label for="temp01">
+                    Temp:
+                    <span id="temp01"></span>
+                </label>
+                <label for="humid01">
+                    Humidity:
+                    <span id="humid01"></span>
+                </label>
+                <label for="weather01">
+                    Weather:
+                    <span id="weather01"></span>
+                </label>
+                <label for="time01">
+                    Time:
+                    <span id="time01"></span>
+                </label>
+            </section>
+            <section id="weatherBox02">
+                <label for="temp02">
+                    Temp:
+                    <span id="temp02"></span>
+                </label>
+                <label for="humid02">
+                    Humidity:
+                    <span id="humid02"></span>
+                </label>
+                <label for="weather02">
+                    Weather:
+                    <span id="weather02"></span>
+                </label>
+                <label for="time02">
+                    Time:
+                    <span id="time02"></span>
+                </label>
+            </section>
+            <section id="weatherBox03">
+                <label for="temp03">
+                    Temp:
+                    <span id="temp03"></span>
+                </label>
+                <label for="humid03">
+                    Humidity:
+                    <span id="humid03"></span>
+                </label>
+                <label for="weather03">
+                    Weather:
+                    <span id="weather03"></span>
+                </label>
+                <label for="time03">
+                    Time:
+                    <span id="time03"></span>
+                </label>
+            </section>
+            <section id="weatherBox04">
+                <label for="temp04">
+                    Temp:
+                    <span id="temp04"></span>
+                </label>
+                <label for="humid04">
+                    Humidity:
+                    <span id="humid04"></span>
+                </label>
+                <label for="weather04">
+                    Weather:
+                    <span id="weather04"></span>
+                </label>
+                <label for="time04">
+                    Time:
+                    <span id="time04"></span>
+                </label>
+            </section>
+        </div>
+        <div id="daysContainer" class="flexContainer">
+            <section id="weatherBox0">
+                <label for="temp0">
+                    Temp:
+                    <span id="temp0"></span>
+                </label>
+                <label for="humid0">
+                    Humidity:
+                    <span id="humid0"></span>
+                </label>
+                <label for="weather0">
+                    Weather:
+                    <span id="weather0"></span>
+                </label>
+                <label for="time0">
+                    Time:
+                    <span id="time0"></span>
+                </label>
+            </section>
+            <section id="weatherBox1">
+                <label for="temp1">
+                    Temp:
+                    <span id="temp1"></span>
+                </label>
+                <label for="humid1">
+                    Humidity:
+                    <span id="humid1"></span>
+                </label>
+                <label for="weather1">
+                    Weather:
+                    <span id="weather1"></span>
+                </label>
+                <label for="time1">
+                    Time:
+                    <span id="time1"></span>
+                </label>
+            </section>
+            <section id="weatherBox2">
+                <label for="temp2">
+                    Temp:
+                    <span id="temp2"></span>
+                </label>
+                <label for="humid2">
+                    Humidity:
+                    <span id="humid2"></span>
+                </label>
+                <label for="weather2">
+                    Weather:
+                    <span id="weather2"></span>
+                </label>
+                <label for="time2">
+                    Time:
+                    <span id="time2"></span>
+                </label>
+            </section>
+            <section id="weatherBox3">
+                <label for="temp3">
+                    Temp:
+                    <span id="temp3"></span>
+                </label>
+                <label for="humid3">
+                    Humidity:
+                    <span id="humid3"></span>
+                </label>
+                <label for="weather3">
+                    Weather:
+                    <span id="weather3"></span>
+                </label>
+                <label for="time3">
+                    Time:
+                    <span id="time3"></span>
+                </label>
+            </section>
+            <section id="weatherBox4">
+                <label for="temp4">
+                    Temp:
+                    <span id="temp4"></span>
+                </label>
+                <label for="humid4">
+                    Humidity:
+                    <span id="humid4"></span>
+                </label>
+                <label for="weather4">
+                    Weather:
+                    <span id="weather4"></span>
+                </label>
+                <label for="time4">
+                    Time:
+                    <span id="time4"></span>
+                </label>
+            </section>
+        </div>        
     </div>
 </body>
 </html>

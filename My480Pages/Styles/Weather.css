@@ -76,12 +76,10 @@ section {
 
     50% {
         background-color: purple;
-        /*transform: scale(1.5);*/
     }
 
     100% {
         background-color: white;
-        /*transform: scale(-1.5);*/
     }
 }
 
@@ -92,12 +90,10 @@ section {
 
     50% {
         background-color: purple;
-        /*transform: scale(1.5);*/
     }
 
     100% {
         background-color: white;
-        /*transform: scale(-1.5);*/
     }
 }
 
