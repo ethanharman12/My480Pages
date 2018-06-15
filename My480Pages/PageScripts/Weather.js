@@ -160,28 +160,6 @@
                 i++;
             }
         }
-
-        //for (var i = 0; i < 5; i++) {
-        //    var weather = forecast[i];
-        //    var timeText = document.getElementById("time" + i);
-        //    timeText.innerText = moment(weather.time).format("MM/DD/YYYY hh:mm:ss");
-
-        //    var tempText = document.getElementById("temp" + i);
-        //    tempText.innerText = weather.tempMin + " - " + weather.tempMax;
-
-        //    var humidText = document.getElementById("humid" + i);
-        //    humidText.innerText = weather.humidity;
-
-        //    var weatherText = document.getElementById("weather" + i);
-        //    weatherText.innerText = weather.weather;
-
-        //    var box = document.getElementById('weatherBox' + i);
-        //    box.classList.add('finished');
-
-        //    setTimeout(function () {
-        //        box.classList.remove('finished');
-        //    }, 1000);
-        //}
     }
 
     function DisplayWeather(weather)
@@ -420,22 +398,22 @@
     {
         var btn = document.getElementById("updateWeatherBtn");
         btn.hidden = false;
-        //var btn = document.getElementById("toggleForecastBtn");
-        //btn.hidden = false;
+        var btn = document.getElementById("toggleForecastBtn");
+        btn.hidden = false;
     }
 
-    //function ToggleForecast() {
-    //    var btn = document.getElementById("toggleForecastBtn");
-    //    var forecastDiv = document.getElementById("forecastContainer");
-    //    if (btn.innerText == "Show Forecast") {
-    //        btn.innerText = "Hide Forecast";
-    //        forecastDiv.style.display = "flex";
-    //    }
-    //    else {
-    //        btn.innerText = "Show Forecast";
-    //        forecastDiv.style.display = "none";
-    //    }
-    //}
+    function ToggleForecast() {
+        var btn = document.getElementById("toggleForecastBtn");
+        var forecastDiv = document.getElementById("forecastContainer");
+        if (btn.innerText == "Show Forecast") {
+            btn.innerText = "Hide Forecast";
+            forecastDiv.style.display = "block";
+        }
+        else {
+            btn.innerText = "Show Forecast";
+            forecastDiv.style.display = "none";
+        }
+    }
 
     return {
         DisplayAltitude: DisplayAltitude,
@@ -445,7 +423,7 @@
         GetLocation: GetLocation,
         GetWeather: GetWeather,
         ParseWeather: ParseWeather,
-        //ToggleForecast: ToggleForecast
+        ToggleForecast: ToggleForecast
     };
 })();
 
