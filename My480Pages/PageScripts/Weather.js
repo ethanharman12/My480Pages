@@ -321,16 +321,7 @@
         {
             ClearError();
             DisplayWeather(weather);
-
-            if (location.coords.altitude)
-            {
-                DisplayAltitude(location.coords.altitude);
-            }
-            else
-            {
-                DisplayAltitude(weather.altitude);
-            }
-
+            
             ShowUpdateButton();
         },
         function (error)
