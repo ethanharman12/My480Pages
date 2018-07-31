@@ -129,13 +129,15 @@
 
         var i = 0;
         var dayIndex = 0;        
+        var tomorrowsDate = new Date();
+        tomorrowsDate.setDate(currentDate + 1)
 
         while (i < 5 && dayIndex < forecast.length) {
             var dayForecast = forecast[dayIndex];
             dayIndex++;
 
-            if (dayForecast.time.getDate() > currentDate) {
-                currentDate = dayForecast.time.getDate();
+            if (dayForecast.time.getDate() == tomorrowsDate.getDate()) {
+                tomorrowsDate.setDate(tomorrowsDate.getDate() + 1)
 
                 var weather = dayForecast;
                 var timeText = document.getElementById("time" + i);
